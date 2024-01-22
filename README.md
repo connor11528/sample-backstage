@@ -163,7 +163,19 @@ Backstage is a single-page application composed of a set of plugins.
 
 Docs: [Intro to plugins | Backstage Software Catalog and Developer Platform](https://backstage.io/docs/plugins/)
 
-Create a new plugin: `yarn new --select plugin`
+Create a new plugin: `yarn new --select plugin` Then you can give your plugin an ID like "sample-plugin". For more fine grained control over the type of plugin you're creating use the `yarn new` command from the root of the project.
+
+A folder with the name of your plugin ID will be created in the **./plugins** directory.
+
+You can run the package in isolation of the rest of the Backstage app for faster dev cycles by running: `yarn workspace @internal/plugin-sample-plugin start` instead of `yarn dev` which runs the entire Backstage application instead of just your plugin.
+
+In the above example "@internal/plugin-sample-plugin" is the package name of the plugin as specified in the `plugins/sample-plugin/package.json` file.
+
+
+
+
+
+
 
 
 
