@@ -80,6 +80,7 @@ Backstage is most valuable when it is THE developer portal at your company. It�
 - drive adoption by devs at the company
 - encode software best practices as Software Templates, with direction from eng leadership.
 - Evangelize Backstage to devs at the company. It’s a “platform of platforms” other devs can build plugins into.
+
 ### Tactics for driving Backstage adoption
 - Lunch & Learns on how to use Backstage and build plugins from scratch
 - Temporarily embedding in other teams that are building plugins
@@ -131,6 +132,7 @@ CREATE DATABASE
 ```
 
 Update app-config.yaml to connect to Postgres, as [outlined here](https://backstage.io/docs/getting-started/configuration).
+
 ### App configuration
 You can:
 - **Add plugins to your app**
@@ -140,6 +142,7 @@ You can:
         - stack overflow: [backstage/plugins/stack-overflow at master · backstage/backstage](https://github.com/backstage/backstage/tree/master/plugins/stack-overflow)
         - slack: [arhill05/backstage-plugin-scaffolder-backend-module-slack](https://github.com/arhill05/backstage-plugin-scaffolder-backend-module-slack#readme)
 - **Customize the look and feel** - you can create your own theme, update logo, styles and icons and make nested, custom sidebars.
+  - Backstage uses Material Icons v4. Search all [icons here](https://v4.mui.com/components/material-icons/).
 - **Customize the homepage** - there’s a plugin for more specifically customizing the homepage, [docs here](https://backstage.io/docs/getting-started/homepage).
   You can use `yarn backstage-cli versions:bump` to upgrade the version of Backstage you’re running. The Backstage version is stored in backstage.json file.
 
@@ -165,11 +168,21 @@ Docs: [Intro to plugins | Backstage Software Catalog and Developer Platform](htt
 
 Create a new plugin: `yarn new --select plugin` Then you can give your plugin an ID like "sample-plugin". For more fine grained control over the type of plugin you're creating use the `yarn new` command from the root of the project.
 
-A folder with the name of your plugin ID will be created in the **./plugins** directory.
+A folder with the name of your plugin ID will be created in the **./plugins** directory. The plugin will be mounted to the Backstage app as defined in `packages/app/package.json`. It will be added to the main routes through a line like this `<Route path="/sample-plugin" element={<SamplePluginPage />} />` in `packages/app/src/App.tsx`.
 
 You can run the package in isolation of the rest of the Backstage app for faster dev cycles by running: `yarn workspace @internal/plugin-sample-plugin start` instead of `yarn dev` which runs the entire Backstage application instead of just your plugin.
 
 In the above example "@internal/plugin-sample-plugin" is the package name of the plugin as specified in the `plugins/sample-plugin/package.json` file.
+
+Routes are defined in the plugin's `src/routes.ts` file and mounted via the `src/plugin.ts` file.
+
+To make requests outside of Backstage you will need to use a proxy. Backstage [comes with one](https://backstage.io/docs/plugins/proxying/) by default. 
+
+There is a robust [search plugin](https://github.com/backstage/backstage/blob/086294bda197a79d954a2bad18276f00e1be0e66/plugins/search/README.md) with [docs](https://backstage.io/docs/plugins/integrating-search-into-plugins).
+
+
+
+
 
 
 
