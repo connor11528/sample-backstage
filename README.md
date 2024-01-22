@@ -144,25 +144,27 @@ You can:
   You can use `yarn backstage-cli versions:bump` to upgrade the version of Backstage you’re running. The Backstage version is stored in backstage.json file.
 
 ## Backstage Core Features
+
 ### Software Catalog
-//todo
 
 ### Kubernetes
-//todo
 
 ### Software Templates
-//todo
 
 ### Backstage Search
-//todo
 
 ### TechDocs
-//todo
 
 ## Integrations
-// todo
 
 ## Plugins
-[Intro to plugins | Backstage Software Catalog and Developer Platform](https://backstage.io/docs/plugins/)
+
+Backstage is a single-page application composed of a set of plugins.
+
+Docs: [Intro to plugins | Backstage Software Catalog and Developer Platform](https://backstage.io/docs/plugins/)
+
+Create a new plugin: `yarn new --select plugin`
+
+
 
 
